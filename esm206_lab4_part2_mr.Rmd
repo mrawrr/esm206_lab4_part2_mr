@@ -1,0 +1,37 @@
+---
+title: "Save a graph"
+author: "Meghna Rao"
+date: "10/18/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+library(palmerpenguins)
+```
+
+## create a new subfolder
+- use new folder in files to create `figures`
+- but git will only store the folder if there is a file inside it. 
+
+## create a graph and save with `ggsave`
+
+```{r}
+ggplot(data = penguins, aes(x = island)) +
+  geom_bar(aes(fill = species))
+
+```
+
+
+#@ use `ggsave` as the last graph that was saved
+- check the wd for a project by `here()` in the console
+- we are using `here` to tell `ggsave` where the graph is being saved within that folder
+- of course you can customize this
+
+
+```{r}
+ggsave(here("figures", "penguins_count.png"))
+```
+
